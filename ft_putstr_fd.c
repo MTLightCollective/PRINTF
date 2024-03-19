@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_arg.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: mamauss <mamauss@42quebec.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 10:03:06 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/19 16:49:28 by mamauss          ###   ########.fr       */
+/*   Created: 2024/03/01 13:20:22 by mamauss           #+#    #+#             */
+/*   Updated: 2024/03/19 16:34:57 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 //#include "libft.h"
-#include <stdarg.h>
 #include <unistd.h>
 
-int	ft_putstr_arg(va_list args)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*str;
-	int		i;
+	int	i;
 
-	str = (char *)va_arg(args, char *);
 	i = 0;
-	while (str[i] != '\0')
+	if (fd == -1 || !s)
+		return ;
+	while (s[i])
 	{
-		write(1, &str[i], 1);
+		write(fd, &s[i], 1);
 		i++;
 	}
-	return (i);
 }

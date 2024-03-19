@@ -6,13 +6,19 @@
 /*   By: mamauss <mamauss@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 08:12:24 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/19 15:49:49 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/19 16:54:27 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 //#include "libft.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
+
+int 	ft_putchar_arg(va_list args);
+int		ft_putstr_arg(va_list args);
+void	ft_putstr_fd(char *s, int fd);
+int 	ft_puthexa_arg(va_list args);
+char	*ft_itoa_arg(va_list args);
 
 void	format_specifier(va_list args, char format)
 {
@@ -23,10 +29,10 @@ void	format_specifier(va_list args, char format)
 		ft_putchar_arg(args);
 	else if (format == 's')
 		ft_putstr_arg(args);
+	else if (format == 'd' || format == 'i')
+		ft_putstr_fd(ft_itoa_arg(args), 1);
 	else if (format == 'p' || format == 'x' || format == 'X')
 		ft_puthexa_arg(args);
-	else if (format == 'd' || format == 'i')
-		ft_itoa(args);
 	/*else if (format == 'u')
 
 	else if (format == '%')*/
