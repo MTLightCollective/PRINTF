@@ -6,10 +6,10 @@
 /*   By: mamauss <mamauss@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 08:12:24 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/17 14:22:38 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/19 15:49:49 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+//#include "libft.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
@@ -23,11 +23,11 @@ void	format_specifier(va_list args, char format)
 		ft_putchar_arg(args);
 	else if (format == 's')
 		ft_putstr_arg(args);
+	else if (format == 'p' || format == 'x' || format == 'X')
+		ft_puthexa_arg(args);
 	else if (format == 'd' || format == 'i')
 		ft_itoa(args);
-	/*else if (format == 'p' || format == 'x' || format == 'X')
-	
-	else if (format == 'u')
+	/*else if (format == 'u')
 
 	else if (format == '%')*/
 	
@@ -54,7 +54,7 @@ int	ft_printf(char *str, ...)
 		}
 		else
 		{
-			ft_putchar(str[i]);
+			write(1, &str[i], 1);
 			count++;
 		}
 		i++;
@@ -83,4 +83,6 @@ int	main()
 	ft_printf("ma fonction imprime %s et %s les strings\n ", s, s2);
 	printf("Le int a imprimer est %d\n", i);
 	ft_printf("ma fonction imprime %d le int\n", i);
+	printf("L'adresse de ptr a imprimer est %p\n", &p);
+	ft_printf("ma fonction imprime %p comme adresse de ptr\n", &p);
 }	
