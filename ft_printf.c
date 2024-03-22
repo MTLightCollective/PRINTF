@@ -6,19 +6,20 @@
 /*   By: mamauss <mamauss@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 08:12:24 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/21 15:48:14 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/21 22:37:18 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include "libft.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdarg.h>
 
+void	ft_putchar_fd(char c, int fd);
 int 	ft_putchar_arg(va_list args);
 int		ft_putstr_arg(va_list args);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_itoa_arg(va_list args);
 int	ft_putnbr_base(va_list args, char *base);
+char	*ft_uitoa_arg(va_list args);
 
 void	format_specifier(va_list args, char format)
 {
@@ -41,9 +42,9 @@ void	format_specifier(va_list args, char format)
 	else if (format == 'X')
 		ft_putnbr_base(args, "0123456789ABCDEF");
 	else if (format == 'u')
-		ft_putstr_fd(ft_itoa_arg((unsigned int)args), 1);
+		ft_putstr_fd(ft_uitoa_arg(args), 1);
 	else if (format == '%')
-		write (1, "%", 1);
+		ft_putchar_fd('%', 1);
 	va_end(args);
 }
 int	ft_printf(char *str, ...)
@@ -90,8 +91,8 @@ int	main()
 	c = 'A';
 	c2 = 'B';
 	i = 42;
-	x = "1a37beea2c028593379ee53d24b56ef1a5cc3bc4d2dac49a384d95041fb4008d";
-	unsd_int = "-13243548535";
+	x = 0x1A3B;
+	unsd_int = 0xDEADBEEF;
 	printf("les char a imprimer sont %c et %c et %s\n", c, c2, s);
 	ft_printf("ma fonction imprime %c et %c et %s les chars\n", c, c2, s);	
 	printf("le string a imprimer est %s et %s\n", s, s2);
@@ -108,4 +109,5 @@ int	main()
 	ft_printf("ma fonction imprime %u comme unsigned int \n", unsd_int);
 	printf("La valeur du pourcentage a imprimer est %%\n");
 	ft_printf("ma fonction imprime %% comme pourcentage \n");
+	ft_printf("un de chaque ! %c %s %d %p %x %X %u 100%%\n", c, s, i, &p, x, x, unsd_int);
 }	

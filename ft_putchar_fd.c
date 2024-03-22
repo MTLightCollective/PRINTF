@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamauss <mamauss@42quebec.com>             +#+  +:+       +#+        */
+/*   By: mamauss <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 13:20:22 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/21 22:13:40 by mamauss          ###   ########.fr       */
+/*   Created: 2024/03/01 12:10:14 by mamauss           #+#    #+#             */
+/*   Updated: 2024/03/21 22:11:19 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include "libft.h"
 #include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (fd == -1 || !s)
+	if (fd == -1)
 		return ;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	write(fd, &c, 1);
 }

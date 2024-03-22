@@ -6,7 +6,7 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:46:47 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/21 15:22:41 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/21 22:43:28 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -38,13 +38,7 @@ void	print_base_nb(unsigned long nbr, char *base, int size)
 	char			a;
 	unsigned long	n;
 
-	if (nbr < 0)
-	{
-		write(1, "-", 1);
-		n = nbr * (-1);
-	}
-	else
-		n = nbr;
+	n = nbr;
 	if (n >= (unsigned int)size)
 		print_base_nb(n / size, base, size);
 	a = base[n % size];
