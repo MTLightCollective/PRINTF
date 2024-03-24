@@ -6,11 +6,10 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:11:04 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 13:08:34 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:47:09 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdarg.h>
-#include <unistd.h>
+#include "ft_printf.h"
 
 int	ft_puthexa_arg(va_list args)
 {

@@ -6,11 +6,10 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 22:29:29 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 13:13:26 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:57:37 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-#include <stdarg.h>
+#include "ft_printf.h"
 
 size_t	digit_counter_unsd(unsigned int n)
 {
@@ -47,7 +46,11 @@ char	*ft_uitoa_arg(va_list args)
 	len = digit_counter_unsd(n);
 	num_str = malloc(sizeof(char) * (len + 1));
 	if (!num_str)
+	{
+		free (num_str);
 		return (NULL);
+	}
 	answer_writer_unsd(n, num_str, len);
+	free (num_str);
 	return (num_str);
 }

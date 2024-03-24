@@ -6,11 +6,10 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:46:47 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 15:06:06 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:47:30 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-#include <stdarg.h>
+#include "ft_printf.h"
 
 void	ft_putchar(char c)
 {

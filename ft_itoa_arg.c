@@ -6,13 +6,10 @@
 /*   By: mamauss <mamauss@student.42quebec>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 13:06:56 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 13:07:28 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:58:00 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdarg.h>
-#include <stdlib.h>
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+#include "ft_printf.h"
 
 int	sign_check(int n)
 {
@@ -76,7 +73,11 @@ char	*ft_itoa_arg(va_list args)
 	len = digit_counter(n);
 	num_str = malloc(sizeof(char) * (len + 1 + is_negative));
 	if (!num_str)
+	{
+		free (num_str);
 		return (0);
+	}
 	answer_writer(n, num_str, len, is_negative);
+	free (num_str);
 	return (num_str);
 }

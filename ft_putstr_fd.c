@@ -6,10 +6,10 @@
 /*   By: mamauss <mamauss@42quebec.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:20:22 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 13:22:44 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:58:52 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include "ft_printf.h"
 
 int	ft_putstr_fd(char *s, int fd)
 {
