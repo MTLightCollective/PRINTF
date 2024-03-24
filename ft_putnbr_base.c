@@ -6,7 +6,7 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:46:47 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 14:10:45 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:06:06 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -33,18 +33,19 @@ int	check_base(char *base)
 	return (1);
 }
 
-void	print_base_nb(unsigned long nbr, char *base, int size)
+void	print_base_nb(unsigned long nbr, char *base, int size, int *counter)
 {
+	(*counter)++;
 	if (nbr >= (unsigned long)size)
-		print_base_nb(nbr / size, base, size);
+		print_base_nb(nbr / size, base, size, counter);
 	ft_putchar(base[nbr % size]);
 }
 
 int	ft_putnbr_base(va_list args, char *base)
 {
-	int	s;
-	unsigned long nbr;
-	int count;
+	int				s;
+	unsigned long	nbr;
+	int				count;
 
 	s = 0;
 	count = 0;
@@ -53,7 +54,7 @@ int	ft_putnbr_base(va_list args, char *base)
 	{
 		while (base[s] != '\0')
 			s++;
-		print_base_nb(nbr, base, s);
+		print_base_nb(nbr, base, s, &count);
 	}
-	return (s);
+	return (count);
 }
