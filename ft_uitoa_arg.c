@@ -6,7 +6,7 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 22:29:29 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 15:57:37 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 16:45:05 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -47,10 +47,8 @@ char	*ft_uitoa_arg(va_list args)
 	num_str = malloc(sizeof(char) * (len + 1));
 	if (!num_str)
 	{
-		free (num_str);
 		return (NULL);
 	}
 	answer_writer_unsd(n, num_str, len);
-	free (num_str);
 	return (num_str);
 }

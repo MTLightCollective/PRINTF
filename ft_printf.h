@@ -6,7 +6,7 @@
 /*   By: mamauss <mamauss@student.42quebec>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:39:25 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 15:52:51 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:06:48 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 int		ft_putchar_fd(char c, int fd);
 int		ft_putchar_arg(va_list args);
+int		ft_putstr(char *s);
 int		ft_putstr_arg(va_list args);
 int		ft_putstr_fd(char *s, int fd);
 char	*ft_itoa_arg(va_list args);

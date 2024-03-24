@@ -6,7 +6,7 @@
 /*   By: mamauss <mamauss@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 08:12:24 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 15:44:58 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:15:34 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -24,8 +24,7 @@ int	format_specifier(va_list args, char format)
 		j += ft_putstr_fd(ft_itoa_arg(args), 1);
 	else if (format == 'p')
 	{
-		j += ft_putstr_fd("0x", 1);
-		j += ft_putnbr_base(args, "0123456789abcdef");
+		j += ft_putstr("0x") + ft_putnbr_base(args, "0123456789abcdef");
 	}
 	else if (format == 'x')
 		j += ft_putnbr_base(args, "0123456789abcdef");
@@ -35,6 +34,8 @@ int	format_specifier(va_list args, char format)
 		j += ft_putstr_fd(ft_uitoa_arg(args), 1);
 	else if (format == '%')
 		j += ft_putchar_fd('%', 1);
+	else
+		return (0);
 	va_end(args);
 	return (j);
 }
