@@ -6,10 +6,9 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:11:04 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/19 16:48:32 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 13:08:34 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include "libft.h"
 #include <stdarg.h>
 #include <unistd.h>
 
