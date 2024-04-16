@@ -6,12 +6,17 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 15:11:04 by mamauss           #+#    #+#             */
-/*   Updated: 2024/04/16 11:57:11 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/04/16 13:38:53 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_puthexa_arg(va_list args)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int	ft_puthexa_arg(va_list args, int i)
 {
 	int		i;
 	char	*str;
