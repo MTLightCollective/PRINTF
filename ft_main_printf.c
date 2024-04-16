@@ -6,7 +6,7 @@
 /*   By: mamauss <mamauss@student.42quebec>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:21:50 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 16:09:24 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:45:25 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -56,5 +56,10 @@ int main(void)
     printf("le compte du mien pour 1 *p est %d\n", ft_printf("un *p ! %p\n", &p));
     printf("le vrai pour 1 str vide est %s\n", (char *)NULL);
     ft_printf("le mien pour 1 str vide est %s\n", (char *)NULL);
-	
+	printf("le test qui peche est %x, %X, et %X\n", -123, -234,  -512579039);
+	ft_printf("le test chez moi done %x, %X, et %X\n", -123, -234, -512579039);
+	printf("le test qui peche est BTq(#}%i%pv;-'%uUOPE>%u%x!)GlM%if(%X*+RFB^%%F5_6~\n", 2049262258, (void *)-8910734404026676726, -62623228, -    1642271912, -651761446, -1341571683, 10134109);
+	ft_printf("le test chez moi done BTq(#}%i%pv;-'%uUOPE>%u%x!)GlM%if(%X*+RFB^%%F5_6~\n", 2049262258, (void *)-8910734404026676726, -62623228, -    1642271912, -651761446, -1341571683, 10134109);
+	printf("le test qui peche est 1k%d.\rI%pYT%i\rran#N%p -J6Vj%%LrI,b%i%xjzI~B\tF@E!", -1236945830, (void *)4229614399554545951, 293986291,     (void *)-5400783225051003511, 63405821, -156004113);
+	ft_printf("le test chez moi done 1k%d.\rI%pYT%i\rran#N%p -J6Vj%%LrI,b%i%xjzI~B\tF@E!", -1236945830, (void *)4229614399554545951, 293986291,     (void *)-5400783225051003511, 63405821, -156004113);	
 }
