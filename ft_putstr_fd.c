@@ -6,22 +6,23 @@
 /*   By: mamauss <mamauss@42quebec.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 13:20:22 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/21 22:13:40 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:08:19 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include "libft.h"
-#include <unistd.h>
+#include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
 	if (fd == -1 || !s)
-		return ;
+		return (0);
 	while (s[i])
 	{
 		write(fd, &s[i], 1);
 		i++;
 	}
+	free (s);
+	return (i);
 }

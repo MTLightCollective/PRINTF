@@ -1,19 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_arg.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_arg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamauss <marvin@42quebec.com>              +#+  +:+       +#+        */
+/*   By: mamauss <mamauss@student.42quebec>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 13:19:40 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/19 16:41:46 by mamauss          ###   ########.fr       */
+/*   Created: 2024/03/24 13:06:56 by mamauss           #+#    #+#             */
+/*   Updated: 2024/03/24 16:58:56 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include "libft.h"
-#include <stdarg.h>
-#include <stdlib.h>
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+#include "ft_printf.h"
 
 int	sign_check(int n)
 {
@@ -69,6 +65,8 @@ char	*ft_itoa_arg(va_list args)
 	if (n == -2147483648)
 	{
 		num_str = malloc(sizeof(char) * 12);
+		if (!num_str)
+			return (NULL);
 		if (num_str)
 			ft_strlcpy(num_str, "-2147483648", 12);
 		return (num_str);
@@ -77,7 +75,7 @@ char	*ft_itoa_arg(va_list args)
 	len = digit_counter(n);
 	num_str = malloc(sizeof(char) * (len + 1 + is_negative));
 	if (!num_str)
-		return (0);
+		return (NULL);
 	answer_writer(n, num_str, len, is_negative);
 	return (num_str);
 }

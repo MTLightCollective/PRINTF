@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_arg.c                                   :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
+/*   By: mamauss <mamauss@student.42quebec>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 14:19:50 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/24 15:46:19 by mamauss          ###   ########.fr       */
+/*   Created: 2024/03/24 17:03:05 by mamauss           #+#    #+#             */
+/*   Updated: 2024/03/24 17:05:16 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putchar_arg(va_list args)
+int	ft_putstr(char *s)
 {
-	char	c;
+	int	i;
 
-	c = (char)va_arg(args, int);
-	write(1, &c, 1);
-	return (1);
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
 }

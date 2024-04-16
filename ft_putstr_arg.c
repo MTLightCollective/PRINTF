@@ -6,12 +6,10 @@
 /*   By: mamauss <mamauss@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:03:06 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/19 16:49:28 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:08:33 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//#include "libft.h"
-#include <stdarg.h>
-#include <unistd.h>
+#include "ft_printf.h"
 
 int	ft_putstr_arg(va_list args)
 {
@@ -19,6 +17,11 @@ int	ft_putstr_arg(va_list args)
 	int		i;
 
 	str = (char *)va_arg(args, char *);
+	if (str == NULL)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
 	i = 0;
 	while (str[i] != '\0')
 	{

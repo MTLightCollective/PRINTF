@@ -6,52 +6,45 @@
 /*   By: mamauss <mamauss@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 08:12:24 by mamauss           #+#    #+#             */
-/*   Updated: 2024/03/21 22:37:18 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:15:34 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd);
-int 	ft_putchar_arg(va_list args);
-int		ft_putstr_arg(va_list args);
-void	ft_putstr_fd(char *s, int fd);
-char	*ft_itoa_arg(va_list args);
-int	ft_putnbr_base(va_list args, char *base);
-char	*ft_uitoa_arg(va_list args);
-
-void	format_specifier(va_list args, char format)
+int	format_specifier(va_list args, char format)
 {
-	//va_list	args_copy;
-	//va_copy(args_copy, args);
+	int	j;
 
+	j = 0;
 	if (format == 'c')
-		ft_putchar_arg(args);
+		j += ft_putchar_arg(args);
 	else if (format == 's')
-		ft_putstr_arg(args);
+		j += ft_putstr_arg(args);
 	else if (format == 'd' || format == 'i')
-		ft_putstr_fd(ft_itoa_arg(args), 1);
+		j += ft_putstr_fd(ft_itoa_arg(args), 1);
 	else if (format == 'p')
-	{		
-		ft_putstr_fd("0x", 1);
-		ft_putnbr_base(args, "0123456789abcdef");
+	{
+		j += ft_putstr("0x") + ft_putnbr_base(args, "0123456789abcdef");
 	}
 	else if (format == 'x')
-		ft_putnbr_base(args, "0123456789abcdef");
+		j += ft_putnbr_base(args, "0123456789abcdef");
 	else if (format == 'X')
-		ft_putnbr_base(args, "0123456789ABCDEF");
+		j += ft_putnbr_base(args, "0123456789ABCDEF");
 	else if (format == 'u')
-		ft_putstr_fd(ft_uitoa_arg(args), 1);
+		j += ft_putstr_fd(ft_uitoa_arg(args), 1);
 	else if (format == '%')
-		ft_putchar_fd('%', 1);
+		j += ft_putchar_fd('%', 1);
+	else
+		return (0);
 	va_end(args);
+	return (j);
 }
+
 int	ft_printf(char *str, ...)
 {
-	int	i;
-	int	count;
-	va_list args;
+	int		i;
+	int		count;
+	va_list	args;
 
 	va_start(args, str);
 	i = 0;
@@ -62,9 +55,7 @@ int	ft_printf(char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			i++;
-			format_specifier(args, str[i]);
-			count++;
+			count += format_specifier(args, str[++i]);
 		}
 		else
 		{
@@ -76,38 +67,3 @@ int	ft_printf(char *str, ...)
 	va_end(args);
 	return (count);
 }
-
-int	main()
-{
-	char			c;  // char
-	char			c2;
-	char			s[6] = "hello"; // pointeur
-	char			s2[10] = "goodbye";
-	int			i;
-	int			*p; // adresse de pointeur
-	unsigned int	x; // hexadecimal
-	unsigned int	unsd_int;
-	
-	c = 'A';
-	c2 = 'B';
-	i = 42;
-	x = 0x1A3B;
-	unsd_int = 0xDEADBEEF;
-	printf("les char a imprimer sont %c et %c et %s\n", c, c2, s);
-	ft_printf("ma fonction imprime %c et %c et %s les chars\n", c, c2, s);	
-	printf("le string a imprimer est %s et %s\n", s, s2);
-	ft_printf("ma fonction imprime %s et %s les strings\n ", s, s2);
-	printf("Le int a imprimer est %d\n", i);
-	ft_printf("ma fonction imprime %d le int\n", i);
-	printf("L'adresse de ptr a imprimer est %p\n", &p);
-	ft_printf("ma fonction imprime %p comme adresse de ptr\n", &p);
-	printf("La valeur du hexa a imprimer est %x\n", x);
-	ft_printf("ma fonction imprime %x comme hexadecimal \n", x);
-	printf("La valeur du unsd int a imprimer est %X\n", x);
-	ft_printf("ma fonction imprime %X comme hexadecimal \n", x);
-	printf("La valeur du unsigned int a imprimer est %u\n", unsd_int);
-	ft_printf("ma fonction imprime %u comme unsigned int \n", unsd_int);
-	printf("La valeur du pourcentage a imprimer est %%\n");
-	ft_printf("ma fonction imprime %% comme pourcentage \n");
-	ft_printf("un de chaque ! %c %s %d %p %x %X %u 100%%\n", c, s, i, &p, x, x, unsd_int);
-}	
