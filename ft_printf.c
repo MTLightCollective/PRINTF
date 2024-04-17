@@ -6,7 +6,7 @@
 /*   By: mamauss <mamauss@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 08:12:24 by mamauss           #+#    #+#             */
-/*   Updated: 2024/04/16 09:55:35 by mamauss          ###   ########.fr       */
+/*   Updated: 2024/04/17 14:33:35 by mamauss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -23,22 +23,21 @@ int	format_specifier(va_list args, char format)
 	else if (format == 'd' || format == 'i')
 		j += ft_putstr_fd(ft_itoa_arg(args), 1);
 	else if (format == 'p')
-		j += ft_putstr("0x") + ft_putnbr_base(args, "0123456789abcdef");
+		j += ft_putstr("0x") + ft_puthexa_arg(args, 3);
 	else if (format == 'x')
-		j += ft_putnbr_base(args, "0123456789abcdef");
+		j += ft_puthexa_arg(args, 1);
 	else if (format == 'X')
-		j += ft_putnbr_base(args, "0123456789ABCDEF");
+		j += ft_puthexa_arg(args, 2);
 	else if (format == 'u')
 		j += ft_putstr_fd(ft_uitoa_arg(args), 1);
 	else if (format == '%')
 		j += ft_putchar_fd('%', 1);
 	else
 		return (0);
-	va_end(args);
 	return (j);
 }
 
-int	ft_printf(char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	int		i;
 	int		count;
